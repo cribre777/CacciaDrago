@@ -12,11 +12,11 @@ public class Drago implements Runnable {
     public void run() {
         for (int i = 0; i < num_battiti; i++) {
             System.out.println(this.nome + " battito ali " + (i + 1));
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }
 
     }
