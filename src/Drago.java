@@ -1,23 +1,24 @@
 public class Drago implements Runnable {
+    private String nome;
+    private int numBattiti;
 
-    String nome;
-    int num_battiti;
-
-    public Drago( int num_battiti, String nome) {
+    public Drago(int numBattiti, String nome) {
         this.nome = nome;
-        this.num_battiti = num_battiti;
-
+        this.numBattiti = numBattiti;
     }
+
     @Override
     public void run() {
-        for (int i = 0; i < num_battiti; i++) {
-            System.out.println(this.nome + " battito ali " + (i + 1));
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-        }
+        try {
+            for (int i = 0; i < numBattiti; i++) {
+                System.out.println(this.nome + " si libera nell'aria! Battito ali " + (i + 1));
 
+                Thread.sleep(1200);
+            }
+            System.out.println(this.nome + " ha completato il volo ed è atterrato sano e salvo.");
+        } catch (InterruptedException e) {
+
+            System.out.println("-> " + this.nome + " È STATO COLPITO ED È MORTO DEFINITIVAMENTE! <-");
+        }
     }
 }

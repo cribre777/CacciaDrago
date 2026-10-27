@@ -1,16 +1,35 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner inTastiera = new Scanner(System.in);
-        System.out.println("Inserisci il numero di battiti di ali: ");
-        int num_battiti = inTastiera.nextInt();
 
-        Thread Drago1 = new Thread(new Drago(num_battiti,"Argo"));
-        Drago1.start();
+        System.out.print("Inserisci il numero di battiti di ali: ");
+        int numBattiti = inTastiera.nextInt();
 
-        for ( int i = 0; i <= 5; i++) {
-            System.out.println("main continua a fare cose .. i = " + i);
+
+        Thread threadDrago = new Thread(new Drago(numBattiti, "Argo"));
+        threadDrago.start();
+
+
+        Cavalliere cacciatore = new Cavalliere();
+
+
+        for (int i = 0; i < numBattiti; i++) {
+            System.out.println("main sta osservando il drago... " + (i + 1));
+
+            try {
+
+                Thread.sleep(600);
+            } catch (InterruptedException e) {
+                System.out.println("Osservazione interrotta.");
+            }
+
+            if (i == numBattiti / 2) {
+                cacciatore.colpisciDrago(threadDrago);
+            }
         }
+
+        inTastiera.close();
     }
 }
